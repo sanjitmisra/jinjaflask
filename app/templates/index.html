@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div id="content">
+		<h2> Addresses </h2>
+		{% for data in userdata %}
+			<br>
+			<h3> {{data.address.type}} </h3>
+			<div>
+				{{ data.name }}
+				<br>
+				{{ data.address.line1 }}
+				<br>
+				{{ data.address.line2 }}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

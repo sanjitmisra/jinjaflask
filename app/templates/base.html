@@ -1,0 +1,165 @@
+<html>
+  <head>
+    
+    {% if title %}
+      <title>{{ title }}</title>
+    {% else %}
+      <title>Home Page</title>
+    {% endif %}
+    <style>
+      html {
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #efefef;
+  font-family: Lato, sans-serif;
+  color: #4e4e4e;
+  margin: 0;
+  padding: 0;
+}
+pre {
+  background: white;
+  margin: 1em;
+  padding: 1em;
+}
+h1,
+h2 {
+      padding-top: 20px
+  },
+h3,
+h4 {}
+
+a {
+  text-decoration: none;
+  color: inherit
+}
+
+a:hover {
+  color: black
+}
+
+.highlight-inline {
+  display: inline;
+  background-color: black;
+  color: white;
+  padding: 2px;
+  line-height: 1.62em;
+  /* box-shadow: 10px 0 0 black, -10px 0 0 black;*/
+  
+  box-decoration-break: clone;
+}
+
+#header {
+  position: fixed;
+  width: 125px;
+  background: white;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.25);
+  color: #999;
+}
+
+
+
+#header ul {
+  list-style-type: none;
+  width: inherit;
+}
+
+#header ul li {
+  padding: 0 12px 3px 0;
+  white-space: nowrap;
+  font-size: 0.98em;
+  font-weight: 700;
+  text-align: right;
+}
+
+#head footer {}
+
+#logo {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  background: #DEBF0D;
+  text-align: center;
+  font-size: 36px;
+  line-height: 98px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#logo:hover {
+  background: #404040;
+}
+
+#content {
+  font-size: 1em;
+  font-weight: 300;
+  background: white;
+  margin-left: 126px;
+  padding-left: 2em;
+}
+
+#hero {
+  background: url('https://s-media-cache-ak0.pinimg.com/736x/d4/35/6c/d4356c8568c68451afd1078756096532.jpg') left center no-repeat black;
+ 
+  min-height: 320px;
+  color: white;
+  font-size: 1.6em;
+  text-align: right;
+  padding-right: 2%;
+}
+
+
+
+@media screen and (max-width: 640px) {
+  #header {
+    height: 125px;
+    display: table;
+    width: 100%;
+  }
+  #header ul li {
+    display: inline;
+  }
+  #content  {
+    margin-left: 0;
+    margin-top: 125px;
+  }
+}
+
+    </style>
+</head>
+
+
+<body>
+
+  <div id="header">
+    <nav role='navigation' id='primary-nav'>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Clients</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <footer>
+      <a href="#"><img src="http://images.clipartpanda.com/envelope-png-envelope_outline-128.png" width="30" height="" alt="contact" /></a>
+    </footer>
+  </div>
+  {% block content %} {% endblock %}
+   
+</body>
+</html> 
