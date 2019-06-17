@@ -1,165 +1,79 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    
-    {% if title %}
-      <title>{{ title }}</title>
-    {% else %}
-      <title>Home Page</title>
-    {% endif %}
-    <style>
-      html {
-  font-size: 100%;
-}
 
-* {
-  box-sizing: border-box;
-}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-body {
-  background: #efefef;
-  font-family: Lato, sans-serif;
-  color: #4e4e4e;
-  margin: 0;
-  padding: 0;
-}
-pre {
-  background: white;
-  margin: 1em;
-  padding: 1em;
-}
-h1,
-h2 {
-      padding-top: 20px
-  },
-h3,
-h4 {}
+    <title>Easy Notes</title>
 
-a {
-  text-decoration: none;
-  color: inherit
-}
-
-a:hover {
-  color: black
-}
-
-.highlight-inline {
-  display: inline;
-  background-color: black;
-  color: white;
-  padding: 2px;
-  line-height: 1.62em;
-  /* box-shadow: 10px 0 0 black, -10px 0 0 black;*/
-  
-  box-decoration-break: clone;
-}
-
-#header {
-  position: fixed;
-  width: 125px;
-  background: white;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 3px 0 5px rgba(0, 0, 0, 0.25);
-  color: #999;
-}
-
-
-
-#header ul {
-  list-style-type: none;
-  width: inherit;
-}
-
-#header ul li {
-  padding: 0 12px 3px 0;
-  white-space: nowrap;
-  font-size: 0.98em;
-  font-weight: 700;
-  text-align: right;
-}
-
-#head footer {}
-
-#logo {
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  margin: 10px auto;
-  background: #DEBF0D;
-  text-align: center;
-  font-size: 36px;
-  line-height: 98px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-#logo:hover {
-  background: #404040;
-}
-
-#content {
-  font-size: 1em;
-  font-weight: 300;
-  background: white;
-  margin-left: 126px;
-  padding-left: 2em;
-}
-
-#hero {
-  background: url('https://s-media-cache-ak0.pinimg.com/736x/d4/35/6c/d4356c8568c68451afd1078756096532.jpg') left center no-repeat black;
- 
-  min-height: 320px;
-  color: white;
-  font-size: 1.6em;
-  text-align: right;
-  padding-right: 2%;
-}
-
-
-
-@media screen and (max-width: 640px) {
-  #header {
-    height: 125px;
-    display: table;
-    width: 100%;
-  }
-  #header ul li {
-    display: inline;
-  }
-  #content  {
-    margin-left: 0;
-    margin-top: 125px;
-  }
-}
-
-    </style>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 </head>
 
-
 <body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Easy Notes</h3>
+            </div>
 
-  <div id="header">
-    <nav role='navigation' id='primary-nav'>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Clients</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
-    <footer>
-      <a href="#"><img src="http://images.clipartpanda.com/envelope-png-envelope_outline-128.png" width="30" height="" alt="contact" /></a>
-    </footer>
-  </div>
-  {% block content %} {% endblock %}
-   
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="/notes">New Note</a>
+                    
+                </li>
+                <li>
+                    <a href="/">History</a>
+                </li>
+                <li>
+                    <a href="#">Manage</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+
+                // close dropdowns
+                $('.collapse.in').toggleClass('in');
+                // and also adjust aria-expanded attributes we use for the open/closed arrows
+                // in our CSS
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
 </body>
-</html> 
+
+</html>

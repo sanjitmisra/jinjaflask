@@ -1,18 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div id="content">
-		<h2> Addresses </h2>
-		{% for data in userdata %}
-			<br>
-			<h3> {{data.address.type}} </h3>
-			<div>
-				{{ data.name }}
-				<br>
-				{{ data.address.line1 }}
-				<br>
-				{{ data.address.line2 }}
-			</div>
-		{% endfor %}
+	<div>
+		<h3>Addresses</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Name</th>
+					<th>Line 1</th>
+					<th>Line 2</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for data in userdata %}
+				<tr>
+					<td> {{data.address.type}} </td>
+					<td>{{ data.name }} </td>
+					<td>{{ data.address.line1 }}</td>
+					<td>{{ data.address.line2 }}</td>
+					<td> <div class="btn btn-normal">Edit</div></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 	</div>
 {% endblock %}
